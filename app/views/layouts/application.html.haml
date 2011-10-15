@@ -1,0 +1,23 @@
+!!!
+%html
+  %head
+    = stylesheet_link_tag "application"
+    = stylesheet_link_tag 'print.css', :media => 'print'
+    /[if lt IE 8]
+      = stylesheet_link_tag 'ie.css', :media => 'screen, projection'
+
+    %title
+      Where Have You Been?
+
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+
+  %body
+    .container
+      .span-24.header
+      .span-12.prepend-6.append-6
+        .title
+          %h1
+            = yield :title
+      = yield
+      .span-24.footer

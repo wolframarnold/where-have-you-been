@@ -1,0 +1,57 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require reset
+ *= require typography
+ *= require grid
+ *= require forms
+*/
+
+@import "bourbon";
+
+// 6 columns across 960px with 6 px gutter
+$gw-column: 155px; // Column Width
+$gw-gutter: 6px;   // Gutter Width
+
+body {
+    background-color: #fffbeb;
+}
+
+h1 {
+    font-weight: bold;
+    margin: 10px;
+}
+
+.header, .footer {
+    height: 10px;
+}
+
+.title {
+    @include box($orient: horizontal, $pack: center, $align: stretch);
+    @include linear-gradient(#ebffff, #b3d6d6);
+    /*@include box-shadow(2px 2px 2px 0px #fff000);*/
+    @include border-radius(5px);
+    margin-bottom: 10px;
+}
+
+.home-photo {
+    overflow: auto;
+}
+
+.box-flex-parent {
+    @include box($orient: horizontal, $pack: justify, $align: center);
+}
+
+.center-col {
+    margin-right: $gw-gutter;
+}
+
+.sidebar-col {
+    width: grid_width(1);
+    margin-right: $gw-gutter;
+}
+
+.last {
+    margin-right: 0;
+}
