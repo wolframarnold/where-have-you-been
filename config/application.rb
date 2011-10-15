@@ -44,5 +44,10 @@ module WhereHaveYouBeen
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Recommended by Devise install for deployments on Heroku:
+    # On config/application.rb forcing your application to not access the DB
+    # or load models when precompiling your assets.
+    config.assets.initialize_on_precompile = false
   end
 end

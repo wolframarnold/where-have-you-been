@@ -18,6 +18,10 @@
 
     .row
       .span-6
+        - flash.each do |key,val|
+          - unless val.blank?
+            %p{class: key}
+              = val
       .span-12
         .title
           %h1
