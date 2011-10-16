@@ -25,15 +25,17 @@
       .span-12
         .title
           %h1
-            = yield :title
+            = title
 
       .span-2
       .span-4.last
-        = link_to "Sign Out", '#'
-        %br
-        = link_to "Sign In", '#'
-        %br
-        = link_to "Sign Up", '#'
+        - if user_signed_in?
+          = link_to "Sign Out", destroy_user_session_path
+        - else
+          = link_to "Sign In", new_user_session_path
+          %br
+          No account?
+          = link_to "Sign Up", new_user_registration_path
           
     .row
       .span-24.spacer
