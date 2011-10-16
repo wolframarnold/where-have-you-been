@@ -41,5 +41,6 @@ group :test do
   # Pretty printed test output
   gem 'turn', :require => false
   gem 'rspec2-rails-views-matchers', '~> 0.2.0'
+  gem 'webrat', '~> 0.7.3'
   gem 'factory_girl_rails', '~> 1.3.0'
 end
