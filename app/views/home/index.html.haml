@@ -16,7 +16,8 @@
     = image_tag 'home_photo.jpg'
 
   .span-4.last
-    = button_to 'Sign Up'
-    %br
-    Got an account?
-    = link_to 'Sign In', '#'
+    - unless user_signed_in?
+      = button_to 'Sign Up', new_user_registration_path, :method => :get
+      %br
+      Got an account?
+      = link_to 'Sign In', new_user_session_path
