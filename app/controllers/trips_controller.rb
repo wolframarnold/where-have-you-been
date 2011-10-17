@@ -1,4 +1,7 @@
 class TripsController < ApplicationController
+  before_filter :authenticate_user!
+  before_filter :find_trip_if_authorized, only: [:edit,:update,:destroy]
+
   # GET /trips
   # GET /trips.json
   def index
@@ -34,13 +37,12 @@ class TripsController < ApplicationController
 
   # GET /trips/1/edit
   def edit
-    @trip = Trip.find(params[:id])
   end
 
   # POST /trips
   # POST /trips.json
   def create
-    @trip = Trip.new(params[:trip])
+    @trip = current_user.trips.build(params[:trip])
 
     respond_to do |format|
       if @trip.save
@@ -56,8 +58,6 @@ class TripsController < ApplicationController
   # PUT /trips/1
   # PUT /trips/1.json
   def update
-    @trip = Trip.find(params[:id])
-
     respond_to do |format|
       if @trip.update_attributes(params[:trip])
         format.html { redirect_to @trip, notice: 'Trip was successfully updated.' }
@@ -72,7 +72,6 @@ class TripsController < ApplicationController
   # DELETE /trips/1
   # DELETE /trips/1.json
   def destroy
-    @trip = Trip.find(params[:id])
     @trip.destroy
 
     respond_to do |format|
@@ -80,4 +79,15 @@ class TripsController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  private
+
+  def find_trip_if_authorized
+    @trip = current_user.trips.find_by_id(params[:id])
+    if @trip.nil?
+      flash[:alert] = "You don't have permissions for this operation"
+      redirect_to trips_path
+    end
+  end
+
 end

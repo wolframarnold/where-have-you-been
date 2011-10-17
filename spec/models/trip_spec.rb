@@ -2,6 +2,11 @@ require 'spec_helper'
 
 describe Trip do
 
+  it 'cannot mass-assign user' do
+    trip = Trip.new(:user_id => 123)
+    trip.user_id.should be_nil
+  end
+
   context 'Validation' do
     it 'must have a name' do
       should_not be_valid
