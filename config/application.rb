@@ -49,5 +49,10 @@ module WhereHaveYouBeen
     # On config/application.rb forcing your application to not access the DB
     # or load models when precompiling your assets.
     config.assets.initialize_on_precompile = false
+
+    # Use HAML as default templating engine for all Rails generators
+    config.generators do |g|
+      g.fixture_replacement "factory_girl", :dir => "spec/factories"
+    end
   end
 end

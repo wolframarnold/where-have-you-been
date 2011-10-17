@@ -19,6 +19,7 @@ gem 'bourbon', '~> 1.0.4'
 gem 'blueprint-rails', '~> 0.1.1'
 gem 'jquery-rails', '~> 1.0.16'
 gem 'haml', '~> 3.1.3'
+gem 'haml-rails', '~> 0.3.4'
 gem 'devise', '~> 1.4.8'
 
 # To use ActiveModel has_secure_password
