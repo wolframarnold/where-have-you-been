@@ -1,22 +1,21 @@
 = content_for :title, 'Where have you been?'
 
-.clear
-.box-flex-parent
-  .sidebar-col
-    %p
-      %b Trip:
-      Peru
-    %p
-      %b City/Place:
-      Machu Picchu
-    %p.small
-      Andes in the Urubamba valley along the train tracks on the way up to Machu Picchu.
+.span-1
+.span-3
+  %p
+    %b Trip:
+    Peru
+  %p
+    %b City/Place:
+    Machu Picchu
+  %p.small
+    Andes in the Urubamba valley along the train tracks on the way up to Machu Picchu.
 
-  .center-col
-    = image_tag 'home_photo.jpg'
+.span-16.centered
+  = image_tag 'home_photo.jpg'
 
-  .sidebar-col.last
-    = button_to 'Sign Up', '#'
-    %br
-    Got an account?
-    = link_to 'Sign In', '#'
+.span-4.last
+  = button_to 'Sign Up'
+  %br
+  Got an account?
+  = link_to 'Sign In', '#'

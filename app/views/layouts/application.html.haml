@@ -13,11 +13,28 @@
     = csrf_meta_tags
 
   %body
-    .container
-      .span-24.header
-      .span-12.prepend-6.append-6
+    .row
+      .span-24.spacer
+
+    .row
+      .span-6
+      .span-12
         .title
           %h1
             = yield :title
+
+      .span-2
+      .span-4.last
+        = link_to "Sign Out", '#'
+        %br
+        = link_to "Sign In", '#'
+        %br
+        = link_to "Sign Up", '#'
+          
+    .row
+      .span-24.spacer
+    .row
+      .span-24.spacer
+
+    .row
       = yield
-      .span-24.footer

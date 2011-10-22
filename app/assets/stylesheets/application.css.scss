@@ -4,15 +4,14 @@
  * the top of the compiled file, but it's generally better to create a new file per style scope.
  *= require reset
  *= require typography
- *= require grid
  *= require forms
 */
 
 @import "bourbon";
 
-// 6 columns across 960px with 6 px gutter
-$gw-column: 155px; // Column Width
-$gw-gutter: 6px;   // Gutter Width
+// Emulate the blueprint grid, width 950px, 30px cols with 10px gutters
+$gw-column: 30px; // Column Width
+$gw-gutter: 10px;   // Gutter Width
 
 body {
     background-color: #fffbeb;
@@ -23,33 +22,34 @@ h1 {
     margin: 10px;
 }
 
-.header, .footer {
+.row {
+    width: 950px;
+    @include box($orient: horizontal, $pack: start, $align: center);
+}
+
+.spacer {
     height: 10px;
 }
 
 .title {
-    @include box($orient: horizontal, $pack: center, $align: stretch);
     @include linear-gradient(#ebffff, #b3d6d6);
-    /*@include box-shadow(2px 2px 2px 0px #fff000);*/
     @include border-radius(5px);
-    margin-bottom: 10px;
+    padding: 2px 5px;
+    text-align: center;
 }
 
-.home-photo {
-    overflow: auto;
+.centered {
+    text-align: center;
 }
 
-.box-flex-parent {
-    @include box($orient: horizontal, $pack: justify, $align: center);
-}
-
-.center-col {
-    margin-right: $gw-gutter;
-}
-
-.sidebar-col {
-    width: grid_width(1);
-    margin-right: $gw-gutter;
+/* emulate  the blueprint grid, span-1 ... span-24 */
+$i: 1;
+@while $i < 25 {
+  .span-#{$i} {
+      width: grid-width(1 * $i);
+      @if $i < 24 { margin-right: $gw-gutter; }
+  }
+  $i: $i + 1;
 }
 
 .last {
