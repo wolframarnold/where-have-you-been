@@ -15,6 +15,7 @@ $gw-gutter: 10px;   // Gutter Width
 
 body {
     background-color: #fffbeb;
+    text-align: center; // hack for FF 3.x, IE, ...
 }
 
 h1 {
@@ -22,9 +23,22 @@ h1 {
     margin: 10px;
 }
 
+@mixin centering {
+    margin-left:auto;  // for centering container...
+    margin-right:auto; // on surrounding canvans
+    text-align: left; // fix side effect of centering hack for FF 3.x, IE, ...
+}
+
 .row {
     width: 950px;
     @include box($orient: horizontal, $pack: start, $align: center);
+    @include centering;
+}
+
+.column {
+    width: 950px;
+    @include box($orient: vertical, $pack: start, $align: center);
+    @include centering;
 }
 
 .spacer {
