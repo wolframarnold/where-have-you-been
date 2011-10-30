@@ -5,12 +5,46 @@ describe TripsController do
 
   context 'when not logged in' do
 
+    # Index and Show actions are public (anybody can view)
     context 'show or index action' do
-      it 'renders view template'
+      it 'GET index is successful' do
+        get :index
+        response.should be_success
+        response.should render_template('index')
+      end
+      it 'GET show is successful' do
+        get :show, :id => FactoryGirl.create(:trip).id
+        response.should be_success
+        response.should render_template('show')
+      end
     end
 
     context 'all other actions' do
-      it 'redirects to login'
+
+      it 'GET new redirects to login' do
+        get :new
+        response.should redirect_to(new_user_session_path)
+      end
+
+      it 'POST create redirects to login' do
+        post :create
+        response.should redirect_to(new_user_session_path)
+      end
+
+      it 'GET edit redirects to login' do
+        get :edit, :id => 123
+        response.should redirect_to(new_user_session_path)
+      end
+
+      it 'PUT update redirects to login' do
+        put :update, :id => 123
+        response.should redirect_to(new_user_session_path)
+      end
+
+      it 'DELETE destroy redirects to login' do
+        delete :destroy, :id => 123
+        response.should redirect_to(new_user_session_path)
+      end
     end
 
   end

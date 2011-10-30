@@ -1,5 +1,5 @@
 class TripsController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :except => [:show, :index]
   before_filter :find_trip_if_authorized, only: [:edit,:update,:destroy]
 
   # GET /trips
