@@ -45,5 +45,6 @@ group :test do
   gem 'turn', :require => false
   gem 'rspec2-rails-views-matchers', '~> 0.2.0'
   gem 'webrat', '~> 0.7.3'
-  gem 'factory_girl_rails', '~> 1.3.0'
+  gem 'factory_girl_rails', '~> 1.3.0', :require => false # require false for Spork, see: # see: https://github.com/timcharper/spork/wiki/Troubleshooting
+  gem 'spork', '~> 0.9.0rc'
 end
