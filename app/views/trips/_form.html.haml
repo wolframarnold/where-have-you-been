@@ -1,16 +1,5 @@
-= form_for @trip do |f|
-  -if @trip.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@trip.errors.count, "error")} prohibited this trip from being saved:"
-      %ul
-        - @trip.errors.full_messages.each do |msg|
-          %li= msg
-
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :user
-    = f.text_field :user
-  .actions
-    = f.submit 'Save'
+= simple_form_for @trip do |f|
+  = f.error_notification
+  
+  = f.input :name
+  = f.button :submit, 'Save'

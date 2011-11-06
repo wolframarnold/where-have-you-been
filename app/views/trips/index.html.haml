@@ -1,9 +1,8 @@
-%h1 Listing trips
+%h2 All Trips
 
 %table
   %tr
     %th Name
-    %th User
     %th
     %th
     %th
@@ -11,7 +10,6 @@
   - @trips.each do |trip|
     %tr
       %td= trip.name
-      %td= trip.user
       %td= link_to 'Show', trip
       %td= link_to 'Edit', edit_trip_path(trip)
       %td= link_to 'Destroy', trip, :confirm => 'Are you sure?', :method => :delete

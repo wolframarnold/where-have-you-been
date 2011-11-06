@@ -26,5 +26,7 @@ WhereHaveYouBeen::Application.configure do
   config.assets.compress = false
 
   # Expands the lines which load the assets
-  config.assets.debug = true
+  # Turning this off, as it causes many requests when running dev server.
+  # This can be enabled on a per-request basis by adding ?debug-assets=true to the URL
+  config.assets.debug = false
 end

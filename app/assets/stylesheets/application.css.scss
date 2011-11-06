@@ -2,12 +2,11 @@
  * This is a manifest file that'll automatically include all the stylesheets available in this directory
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
  * the top of the compiled file, but it's generally better to create a new file per style scope.
- *= require reset
- *= require typography
- *= require forms
 */
 
+@import "flutie";
 @import "bourbon";
+@import "form";
 
 // Emulate the blueprint grid, width 950px, 30px cols with 10px gutters
 $gw-column: 30px; // Column Width
@@ -16,11 +15,6 @@ $gw-gutter: 10px;   // Gutter Width
 body {
     background-color: #fffbeb;
     text-align: center; // hack for FF 3.x, IE, ...
-}
-
-h1 {
-    font-weight: bold;
-    margin: 10px;
 }
 
 @mixin centering {

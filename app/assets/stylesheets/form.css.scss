@@ -1,0 +1,16 @@
+.required abbr {
+    color: red;
+}
+
+.field_with_errors, .error_notification {
+    border: 2px solid #ddd;
+    @include border-radius(5px);
+    padding: 10px;
+    background-color: #f0f0f0;
+    background: #FBE3E4;
+    border-color: #FBC2C4;
+}
+
+.field_with_errors {
+    color: #D12F19;
+}
