@@ -1,9 +1,13 @@
 WhereHaveYouBeen::Application.routes.draw do
+  get "experiments_controller/index"
+
   resources :trips
 
   devise_for :users
 
   root :to => 'home#index'
+
+  match '/experimental' => 'experiments#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

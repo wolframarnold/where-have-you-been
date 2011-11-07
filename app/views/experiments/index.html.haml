@@ -1,0 +1,11 @@
+%h2 Experiments
+
+- city = 'San Francisco, CA'
+- gmap = Gmaps4rails.geocode(city).first
+
+
+= gmaps({markers: {data: [gmap].to_json}, map_options: {auto_zoom: false, zoom: 10}})
+
+-#This should go at the end of the application layout for best page loading experience
+= yield :scripts
+
