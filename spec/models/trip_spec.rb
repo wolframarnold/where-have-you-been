@@ -18,7 +18,7 @@ describe Trip do
     end
   end
 
-  context 'Association' do
+  context 'User Association' do
     it 'responds_to user' do
       should respond_to(:user)
     end
@@ -27,4 +27,25 @@ describe Trip do
       trip.user.should be_kind_of(User)
     end
   end
+
+  context 'Places Association' do
+    it 'responds to places' do
+      should respond_to(:places)
+    end
+    it 'can create a place' do
+      trip = FactoryGirl.create(:trip)
+      expect {
+        trip.places.create(:name => 'Hello World!')
+      }.should change(trip.places,:count).by(1)
+    end
+    it 'will remove dependents' do
+      place = FactoryGirl.create(:place)
+      place.should be_persisted
+      trip = place.trip
+      expect {
+        trip.destroy
+      }.to change(Place,:count).by(-1)
+    end
+  end
+
 end
