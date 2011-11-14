@@ -48,4 +48,17 @@ describe Trip do
     end
   end
 
+  context 'nested_attributes_for :places' do
+    it 'can create a trip with a place' do
+      expect {
+      expect {
+        trip = Trip.new(name: 'SoCal', places_attributes: [{name: 'LA'},{name: 'Anaheim'}])
+        trip.user = FactoryGirl.create(:user)
+        trip.should have(2).places
+        trip.save!
+      }.should change(Trip,:count).by(1)
+      }.should change(Place,:count).by(2)
+    end
+  end
+
 end
