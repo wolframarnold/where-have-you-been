@@ -1,4 +1,6 @@
 class TripsController < ApplicationController
+  before_filter :authenticate_user!, :except => [:index, :show]
+
   # GET /trips
   # GET /trips.json
   def index
@@ -40,7 +42,7 @@ class TripsController < ApplicationController
   # POST /trips
   # POST /trips.json
   def create
-    @trip = Trip.new(params[:trip])
+    @trip = current_user.trips.build(params[:trip])
 
     respond_to do |format|
       if @trip.save
