@@ -80,6 +80,16 @@ describe TripsController do
         get :new
         assigns(:trip).should be_a_new(Trip)
       end
+
+      it 'associates trip with User' do
+        get :new
+        assigns(:trip).user.should == @user
+      end
+
+      it 'instantiates 5 blank places' do
+        get :new
+        assigns(:trip).should have(5).places
+      end
     end
 
     # Edit, create, update, delete are specific to the user
@@ -88,6 +98,11 @@ describe TripsController do
       it "assigns the requested trip as @trip" do
         get :edit, :id => @trip.id.to_s
         assigns(:trip).should eq(@trip)
+      end
+      it 'instantiates blank place objects up to a total of 5' do
+        @trip.places.create(name: 'San Diego')
+        get :edit, :id => @trip.id.to_s
+        assigns(:trip).should have(5).places
       end
     end
 

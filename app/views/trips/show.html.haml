@@ -1,6 +1,11 @@
-%p
-  %b Name:
-  = @trip.name
+%h2= @trip.name
+
+%h3 Places visited
+
+%ul
+  - @trip.places.each do |place|
+    %li
+      = place.name
 
 = link_to 'Edit', edit_trip_path(@trip)
 \|

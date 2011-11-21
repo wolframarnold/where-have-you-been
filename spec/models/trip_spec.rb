@@ -30,6 +30,15 @@ describe Trip do
       }.should change(Trip,:count).by(1)
       }.should change(Place,:count).by(2)
     end
+    it "ignores places with a blank name" do
+      trip = FactoryGirl.create(:trip)
+      expect {
+        trip.places_attributes = [{name: ''}]
+        trip.should have(0).places
+        trip.should be_valid
+        trip.save
+      }.should_not change{trip.places.count}
+    end
   end
 
 end

@@ -9,6 +9,9 @@ describe 'trips/_form' do
     it 'should have a form posting to /trips' do
       rendered.should have_tag "input[name='trip[name]']"
     end
+    it 'should have input field for places' do
+      rendered.should have_tag("input[name='trip[places_attributes][3][name]']")
+    end
   end
 
   shared_examples_for 'input form with errors' do
@@ -21,6 +24,7 @@ describe 'trips/_form' do
     it_behaves_like 'input form' do
       before do
         @trip = Trip.new
+        5.times {@trip.places.build}
         @url = trips_path
         render
       end
@@ -38,6 +42,7 @@ describe 'trips/_form' do
     it_behaves_like 'input form' do
       before do
         @trip = FactoryGirl.create(:trip)
+        5.times {@trip.places.build}
         @url = trip_path(@trip)
         render
       end

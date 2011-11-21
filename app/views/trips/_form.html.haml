@@ -1,5 +1,11 @@
 = simple_form_for @trip do |f|
   = f.error_notification
-  
+
   = f.input :name
+
+  %ul
+  = f.simple_fields_for :places do |places_form|
+    %li
+      = places_form.input :name, :label => "Place/City"
+
   = f.button :submit, 'Save'

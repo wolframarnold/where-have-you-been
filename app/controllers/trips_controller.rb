@@ -27,7 +27,8 @@ class TripsController < ApplicationController
   # GET /trips/new
   # GET /trips/new.json
   def new
-    @trip = Trip.new
+    @trip = current_user.trips.build
+    5.times {@trip.places.build}
 
     respond_to do |format|
       format.html # new.html.erb
@@ -37,6 +38,7 @@ class TripsController < ApplicationController
 
   # GET /trips/1/edit
   def edit
+    (5-@trip.places.count).times {@trip.places.build}
   end
 
   # POST /trips

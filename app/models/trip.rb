@@ -8,6 +8,6 @@ class Trip < ActiveRecord::Base
 
   has_many :places, dependent: :destroy, :inverse_of => :trip
 
-  accepts_nested_attributes_for :places
+  accepts_nested_attributes_for :places, :reject_if => :all_blank
 
 end
