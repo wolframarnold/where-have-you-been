@@ -7,6 +7,15 @@
     %li
       = place.name
 
+-#= gmaps({markers: {data: geocoded.to_json}, map_options: {auto_zoom: false, zoom: 10}})
+= gmaps(markers: {data: geocoded.to_json},
+        polylines: {data: polylines.to_json})
+
+-#This should go at the end of the application layout for best page loading experience
+= yield :scripts
+
+
+
 = link_to 'Edit', edit_trip_path(@trip)
 \|
 = link_to 'Back', trips_path
