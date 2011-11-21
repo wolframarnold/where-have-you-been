@@ -16,13 +16,5 @@ describe Place do
     end
   end
 
-  context 'Trip Association' do
-    it 'responds_to trip' do
-      should respond_to(:trip)
-    end
-    it 'can retrieve a trip' do
-      place = FactoryGirl.create(:place)
-      place.trip.should be_kind_of(Trip)
-    end
-  end
+  it_behaves_like 'belongs_to association', 'place', 'trip'
 end
