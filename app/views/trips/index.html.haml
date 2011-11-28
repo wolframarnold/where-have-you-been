@@ -1,4 +1,4 @@
-= render 'show', :trip => @latest_trip
+= render 'show', :trip => @latest_trip if @latest_trip.present?
 
 %h2 Other Trips
 

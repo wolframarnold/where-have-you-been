@@ -23,7 +23,7 @@ describe 'home/index' do
       rendered.should_not have_tag('input[value="Sign Up"]')
     end
     it 'does not have a Sign In link' do
-      rendered.should_not contain('Sign In')
+      rendered.should_not match('Sign In')
     end
   end
 end

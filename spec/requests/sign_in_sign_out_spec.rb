@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'capybara/rspec'
 
 describe "User Sign In, Sign Out" do
   before do
@@ -8,22 +9,22 @@ describe "User Sign In, Sign Out" do
 
   it "can sign in and is redirected to home page" do
     visit new_user_session_path
-    response.status.should be(200)
-    fill_in 'email', with: @user.email
-    fill_in 'password', with: 'password'
+    current_path.should == '/users/sign_in'
+    fill_in 'Email', with: @user.email
+    fill_in 'Password', with: 'password'
     click_button 'Sign in'
-    current_url.should == "http://www.example.com/trips"
-    response.should contain("Sign Out")
+    current_path.should == "/trips"
+    page.should have_content("Sign Out")
   end
 
   it "can sign out" do
     visit new_user_session_path
-    fill_in 'email', with: @user.email
-    fill_in 'password', with: 'password'
+    fill_in 'Email', with: @user.email
+    fill_in 'Password', with: 'password'
     click_button 'Sign in'
     click_link 'Sign Out'
-    current_url.should == 'http://www.example.com/'
-    response.should contain("Sign In")
+    current_path.should == '/'
+    page.should have_content("Sign In")
   end
 
 end
