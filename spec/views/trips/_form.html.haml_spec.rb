@@ -6,6 +6,12 @@ describe 'trips/_form' do
     it 'should have an input field for name' do
       rendered.should have_tag "form[action='#{@url}']"
     end
+    it 'should have an input field for begun_on' do
+      rendered.should have_tag "select[name*=begun_on]"
+    end
+    it 'should have an input field for ended_on' do
+      rendered.should have_tag "select[name*=ended_on]"
+    end
     it 'should have a form posting to /trips' do
       rendered.should have_tag "input[name='trip[name]']"
     end

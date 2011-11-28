@@ -7,6 +7,12 @@ describe Trip do
     trip.user_id.should be_nil
   end
 
+  it 'can mass-assign begun_on, ended_on' do
+    trip = Trip.new(:begun_on => Date.yesterday, :ended_on => Date.today)
+    trip.begun_on.should_not be_nil
+    trip.ended_on.should_not be_nil
+  end
+
   it 'returns trips in descending order' do
     trip_oldest = FactoryGirl.create(:trip, created_at: 1.year.ago)
     trip_older  = FactoryGirl.create(:trip, created_at: 1.month.ago)
@@ -22,6 +28,16 @@ describe Trip do
     it 'must have a user' do
       should_not be_valid
       subject.errors[:user].should_not be_empty
+    end
+    it 'must have ended_on if begun_on is set' do
+      subject.begun_on = Date.yesterday
+      subject.should_not be_valid
+      subject.errors[:ended_on].should_not be_blank
+    end
+    it 'must have begun_on if ended_on is set' do
+      subject.ended_on = Date.yesterday
+      subject.should_not be_valid
+      subject.errors[:begun_on].should_not be_blank
     end
   end
 

@@ -1,5 +1,11 @@
 %h2= trip.name
 
+- if trip.begun_on.present?
+  %h3
+    = trip.begun_on
+    to
+    = trip.ended_on
+
 %h3 Places visited
 
 %ul
@@ -7,7 +13,6 @@
     %li
       = place.name
 
--#= gmaps({markers: {data: geocoded.to_json}, map_options: {auto_zoom: false, zoom: 10}})
 = gmaps(markers:   {data: geocoded(trip).to_json},
         polylines: {data: polylines(trip).to_json})
 
