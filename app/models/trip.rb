@@ -10,4 +10,6 @@ class Trip < ActiveRecord::Base
 
   accepts_nested_attributes_for :places, :reject_if => :all_blank
 
+  scope :desc, order('created_at DESC')
+
 end

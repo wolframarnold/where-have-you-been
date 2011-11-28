@@ -5,7 +5,8 @@ class TripsController < ApplicationController
   # GET /trips
   # GET /trips.json
   def index
-    @trips = Trip.all
+    @trips = Trip.desc.all
+    @latest_trip = @trips.first
 
     respond_to do |format|
       format.html # index.html.erb

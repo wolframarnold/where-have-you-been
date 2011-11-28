@@ -7,6 +7,13 @@ describe Trip do
     trip.user_id.should be_nil
   end
 
+  it 'returns trips in descending order' do
+    trip_oldest = FactoryGirl.create(:trip, created_at: 1.year.ago)
+    trip_older  = FactoryGirl.create(:trip, created_at: 1.month.ago)
+    trip_recent = FactoryGirl.create(:trip, created_at: 1.day.ago)
+    Trip.desc.first.should == trip_recent
+  end
+
   context 'Validation' do
     it 'must have a name' do
       should_not be_valid

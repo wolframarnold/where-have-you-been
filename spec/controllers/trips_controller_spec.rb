@@ -66,6 +66,10 @@ describe TripsController do
         get :index
         assigns(:trips).should eq([@trip])
       end
+      it 'assigns @latest_trip' do
+        get :index
+        assigns(:latest_trip).should eq(@trip)
+      end
     end
 
     describe "GET show" do
