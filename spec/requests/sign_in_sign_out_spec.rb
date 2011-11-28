@@ -2,15 +2,17 @@ require 'spec_helper'
 
 describe "User Sign In, Sign Out" do
   before do
-    @user = FactoryGirl.create(:user)
+    @trip = FactoryGirl.create(:trip)
+    @user = @trip.user
   end
+
   it "can sign in and is redirected to home page" do
     visit new_user_session_path
     response.status.should be(200)
     fill_in 'email', with: @user.email
     fill_in 'password', with: 'password'
     click_button 'Sign in'
-    current_url.should == 'http://www.example.com/'
+    current_url.should == "http://www.example.com/trips"
     response.should contain("Sign Out")
   end
 

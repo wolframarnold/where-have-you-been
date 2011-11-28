@@ -3,9 +3,11 @@ WhereHaveYouBeen::Application.routes.draw do
 
   resources :trips
 
-  devise_for :users
+  devise_for :users do
+  end
 
   root :to => 'home#index'
+  match '/trips' => 'trips#index', as: :user_root
 
   match '/experimental' => 'experiments#index'
 
