@@ -64,4 +64,19 @@ describe Trip do
     end
   end
 
+  context "as_json" do
+    before do
+      @jan1 = Time.utc(2011,1,1)
+      Time.stub!(:now).and_return(@jan1)
+      @trip = FactoryGirl.create(:trip_with_places)
+    end
+
+    it 'returns trips with places' do
+      @trip.as_json.should have_key(:places)
+      @trip.as_json[:places].should be_a(Array)
+      @trip.as_json[:places].first.should include('name' => 'Cuzco')
+    end
+
+  end
+
 end

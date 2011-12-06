@@ -5,4 +5,9 @@ FactoryGirl.define do
     name 'Peru'
     user
   end
+
+  factory :trip_with_places, :parent => :trip do
+    places { [ FactoryGirl.build(:place, :trip => nil) ] }
+  end
 end
+

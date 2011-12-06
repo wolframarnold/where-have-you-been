@@ -14,4 +14,8 @@ class Trip < ActiveRecord::Base
 
   scope :desc, order('created_at DESC')
 
+  def as_json(opts={})
+    super(opts.merge(:include => :places))
+  end
+
 end
