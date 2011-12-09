@@ -1,4 +1,6 @@
 WhereHaveYouBeen::Application.routes.draw do
+  resources :comments
+
   get "experiments_controller/index"
 
   resources :trips
